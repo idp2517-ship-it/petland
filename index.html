@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Головна — PetLand</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <div class="top">
+    <a class="logo" href="index.html">🐾 PetLand</a>
+    <form class="search" action="catalog.html"><input id="hq" name="q" placeholder="Пошук товарів..."></form>
+    <button class="cartbtn" id="openCart">Кошик <b id="cartCount">0</b></button>
+  </div>
+  <nav><a href="index.html" class=on>Головна</a><a href="catalog.html">Каталог</a><a href="catalog.html?c=dogs">Собаки</a><a href="catalog.html?c=cats">Коти</a><a href="contacts.html">Контакти</a></nav>
+</div></header>
+<main class="wrap">
+<section class="hero">
+  <div><small>ТУРБОТА В КОЖНІЙ ПОКУПЦІ</small><h1>З турботою про кожного хвостика</h1>
+  <p>Добрі товари для здорового, активного та щасливого життя вашого улюбленця.</p>
+  <a class="btn" href="catalog.html">Перейти до каталогу →</a></div>
+  <img src="images/hero.jpg" alt="Собака породи ретрівер">
+</section>
+<section class="perks">
+  <div><b>Швидка доставка</b>1–3 дні по Україні</div><div><b>Гарантія якості</b>Лише перевірені бренди</div>
+  <div><b>Зручна оплата</b>Онлайн або при отриманні</div><div><b>Підтримка 7 днів</b>Ми завжди поруч</div>
+</section>
+<h2>Популярні категорії</h2>
+<section class="cats"><a href="catalog.html?c=dogs"><span>🐕</span>Собаки</a><a href="catalog.html?c=cats"><span>🐈</span>Коти</a><a href="catalog.html?c=birds"><span>🦜</span>Птахи</a><a href="catalog.html?c=rodents"><span>🐹</span>Гризуни</a><a href="catalog.html?c=fish"><span>🐠</span>Рибки</a></section>
+<h2>Товари зі знижками</h2>
+<section class="grid" id="saleGrid"></section>
+</main>
+<footer><div class="wrap">PetLand · Усе для щасливих улюбленців · +380 00 000 00 00 · info@petland.example</div></footer>
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

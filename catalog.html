@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог — PetLand</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <div class="top">
+    <a class="logo" href="index.html">🐾 PetLand</a>
+    <form class="search" action="catalog.html"><input id="q" name="q" placeholder="Пошук товарів..."></form>
+    <button class="cartbtn" id="openCart">Кошик <b id="cartCount">0</b></button>
+  </div>
+  <nav><a href="index.html">Головна</a><a href="catalog.html" class=on>Каталог</a><a href="catalog.html?c=dogs" class=on>Собаки</a><a href="catalog.html?c=cats" class=on>Коти</a><a href="contacts.html">Контакти</a></nav>
+</div></header>
+<main class="wrap">
+<h2>Каталог товарів</h2>
+<div class="bar">
+  <button class="chip on" data-cat="all">Усі</button>
+  <button class="chip" data-cat="dogs">Собаки</button><button class="chip" data-cat="cats">Коти</button>
+  <button class="chip" data-cat="birds">Птахи</button><button class="chip" data-cat="rodents">Гризуни</button>
+  <button class="chip" data-cat="fish">Рибки</button>
+  <select id="sort"><option value="">Рекомендовані</option><option value="asc">Ціна: від дешевих</option>
+  <option value="desc">Ціна: від дорогих</option><option value="name">За назвою</option></select>
+</div>
+<p id="found" class="empty" style="padding:0 0 14px"></p>
+<section class="grid" id="catalogGrid"></section>
+</main>
+<footer><div class="wrap">PetLand · Усе для щасливих улюбленців · +380 00 000 00 00 · info@petland.example</div></footer>
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
