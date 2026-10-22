@@ -26,6 +26,19 @@ function renderProducts(list, box) {
   box.innerHTML = list.length ? list.map(cardHTML).join("") : '<p class="empty">Нічого не знайдено</p>';
 }
 
+
+/* ===== Вміст модального вікна товару: фото, ціна, характеристики ===== */
+function infoHTML(p) {
+  const rows = [...(p.specs || []), ["Артикул", "PL-" + String(p.id).padStart(3, "0")], ["Наявність", "В наявності"]];
+  return `<div class="mph">${p.emoji}<img src="images/${p.img}" alt="${p.name}" onerror="this.remove()"></div>
+    <h3>${p.name}</h3>
+    <p class="muted">Категорія: ${categories[p.cat]}</p>
+    <p class="price">${money(p.price)}${p.old ? `<s>${money(p.old)}</s>` : ""}</p>
+    <h4>Характеристики</h4>
+    <table class="spec">${rows.map(r => `<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join("")}</table>
+    <button class="btn" data-add="${p.id}">До кошика</button>`;
+}
+
 /* ===== Модальні вікна (створюються через JS) ===== */
 document.body.insertAdjacentHTML("beforeend", `
   <dialog id="cartDlg"><h3>Ваш кошик</h3><div id="cartList"></div>
@@ -38,7 +51,7 @@ document.body.insertAdjacentHTML("beforeend", `
       <button type="button" class="btn light" data-close>Закрити</button>
     </form></dialog>
   <dialog id="infoDlg"><div id="infoBody"></div>
-    <button class="btn light" data-close style="margin-top:12px">Закрити</button></dialog>`);
+    <button class="btn light" data-close style="margin-top:10px">Закрити</button></dialog>`);
 
 function renderCart() {
   const ids = Object.keys(cart);
@@ -61,8 +74,7 @@ document.addEventListener("click", e => {
   if (t.dataset.dec) { if (--cart[t.dataset.dec] <= 0) delete cart[t.dataset.dec]; saveCart(); renderCart(); }
   if (t.closest("[data-info]")) {
     const p = products.find(x => x.id == t.closest("[data-info]").dataset.info);
-    $("#infoBody").innerHTML = `<h3>${p.name}</h3><p>Категорія: ${categories[p.cat]}</p>
-      <p class="price">${money(p.price)}</p><br><button class="btn" data-add="${p.id}">До кошика</button>`;
+    $("#infoBody").innerHTML = infoHTML(p);
     $("#infoDlg").showModal();
   }
   if (t.dataset.close !== undefined) t.closest("dialog").close();
